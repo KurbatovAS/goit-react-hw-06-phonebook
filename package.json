@@ -47,11 +47,11 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/KurbatovAS/goit-react-hw-04-phonebook.git"
+    "url": "git+https://github.com/KurbatovAS/goit-react-hw-06-phonebook.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/KurbatovAS/goit-react-hw-04-phonebook/issues"
+    "url": "https://github.com/KurbatovAS/goit-react-hw-06-phonebook/issues"
   }
 }
