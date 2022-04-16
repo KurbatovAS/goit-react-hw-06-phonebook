@@ -1,0 +1,12 @@
+.list {
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 380px;
+    padding: 10px 15px;
+    list-style-type:disc;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.25rem;
+    color: #1967d2;    
+}
