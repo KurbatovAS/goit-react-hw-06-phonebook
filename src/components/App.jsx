@@ -6,20 +6,21 @@ import ContactForm from './ContactForm';
 import Filter from './Filter';
 import Notitfication from './Notitfication';
 import ContactList from './ContactList';
-import {
-  getContactsFromLS,
-  addContactsToLS,
-} from '../helpers/LocalStorage/LocalStorage';
+// import {
+//   getContactsFromLS,
+//   addContactsToLS,
+// } from '../helpers/LocalStorage/LocalStorage';
+import { addContactsToLS } from '../helpers/LocalStorage/LocalStorage';
 
 import { set } from 'redux/reduxFilter/slice';
 import { add, remove } from 'redux/reduxContacts/slice';
 
-const initialContacts = [
-  { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-  { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-  { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-  { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
-];
+// const initialContacts = [
+//   { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
+//   { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
+//   { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
+//   { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
+// ];
 
 function App() {
   const dispatch = useDispatch();
@@ -27,13 +28,15 @@ function App() {
   const reduxContacts = useSelector(state => state.reduxContacts);
   const reduxFilter = useSelector(state => state.reduxFilter);
 
-  useEffect(() => {
-    if (getContactsFromLS('contacts')) {
-      dispatch(add(getContactsFromLS('contacts')));
-    } else {
-      dispatch(add(initialContacts));
-    }
-  }, []);
+  // const LSContacts = getContactsFromLS('contacts');
+
+  // useEffect(() => {
+  //   if (LSContacts) {
+  //     dispatch(add(LSContacts));
+  //   } else {
+  //     dispatch(add(initialContacts));
+  //   }
+  // }, []);
 
   useEffect(() => {
     addContactsToLS('contacts', reduxContacts);
