@@ -1,9 +1,46 @@
-import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
+import shortid from 'shortid';
+import { add } from 'redux/reduxContacts/slice';
 import s from './ContactForm.module.css';
 
-function ContactForm({ onFormSubmit }) {
+function ContactForm() {
+  const dispatch = useDispatch();
+  const reduxContacts = useSelector(state => state.reduxContacts);
+
+  const submitHandler = e => {
+    e.preventDefault();
+
+    const newContactName = e.target.elements.name.value;
+    const newContactNumber = e.target.elements.number.value;
+
+    if (contactСheck(newContactName)) {
+      alert(`${newContactName} is already in you contacts`);
+      return;
+    }
+
+    const newContact = {
+      id: shortid(),
+      name: newContactName,
+      number: newContactNumber,
+    };
+
+    addNewContact(newContact);
+
+    e.target.reset();
+  };
+
+  function addNewContact(newContact) {
+    dispatch(add([newContact]));
+  }
+
+  function contactСheck(name) {
+    return reduxContacts.find(
+      contact => contact.name.toLowerCase() === name.toLowerCase()
+    );
+  }
+
   return (
-    <form name="contact_form" onSubmit={onFormSubmit} className={s.form}>
+    <form name="contact_form" onSubmit={submitHandler} className={s.form}>
       <label className={s.label}>
         Name
         <input
@@ -35,9 +72,5 @@ function ContactForm({ onFormSubmit }) {
     </form>
   );
 }
-
-ContactForm.propTypes = {
-  onFormSubmit: PropTypes.func.isRequired,
-};
 
 export default ContactForm;
